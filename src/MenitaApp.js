@@ -1,9 +1,11 @@
 import React from 'react'
+import { AppRouter } from './routers/AppRouter'
+import { BrowserRouter } from 'react-router-dom'
 
 export const MenitaApp = () => {
     return (
-        <div>
-            <h1>Hola Mundo!</h1>
-        </div>
+        <BrowserRouter>
+            <AppRouter />
+        </BrowserRouter>
     )
 }
