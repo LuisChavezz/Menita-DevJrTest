@@ -10,9 +10,10 @@ export const CreateEmpScreen = () => {
         rfc: '',
         fecha: '',
         departamento: '',
-        sueldo: '',
+        sueldo: 0,
+        status: 'Inactivo',
     });
-    const { nombre, rfc, fecha, departamento, sueldo } = formValues;
+    const { nombre, rfc, fecha, departamento, sueldo, status } = formValues;
 
 
 
@@ -52,6 +53,7 @@ export const CreateEmpScreen = () => {
                     onChange={ handleInputChange }
                 />
 
+                <label>Departamento: </label>
                 <select 
                     name="departamento"
                     value={ departamento }
@@ -64,6 +66,16 @@ export const CreateEmpScreen = () => {
                     <option value="Nómina">Nómina</option>
                 </select>
                 
+                <label>Status: </label>
+                <select 
+                    name="status"
+                    value={ status }
+                    onChange={ handleInputChange }
+                >
+                    <option value="Activo">Activo</option>
+                    <option value="Inactivo">Inactivo</option>
+                </select>
+
                 <input 
                     type="number"
                     name="sueldo"
@@ -72,7 +84,7 @@ export const CreateEmpScreen = () => {
                     value={ sueldo }
                     onChange={ handleInputChange }
                 />
-
+                
                 <button
                     type="submit"
                 >
