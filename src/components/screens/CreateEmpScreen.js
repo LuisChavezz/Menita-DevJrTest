@@ -1,4 +1,7 @@
 import React from 'react'
+import validator from 'validator';
+import Swal from 'sweetalert2';
+
 import { useForm } from '../../hooks/useForm';
 
 
@@ -11,7 +14,7 @@ export const CreateEmpScreen = () => {
         fecha: '',
         departamento: '',
         sueldo: 0,
-        status: 'Inactivo',
+        status: 'Activo',
     });
     const { nombre, rfc, fecha, departamento, sueldo, status } = formValues;
 
@@ -20,9 +23,34 @@ export const CreateEmpScreen = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        console.log( formValues );
+        if ( isFormValid() ) { // Sí el formulario es válido
+            console.log( formValues );
+            reset();
+        }
+    }
 
-        // reset();
+    //Validación del formulario
+    const isFormValid = () => {
+
+        if ( validator.isEmpty( nombre ) || nombre === undefined ) {
+            Swal.fire('Error', 'Debe ingresar un nombre.' ,'error');
+            return false;
+
+        } else if ( validator.isEmpty( rfc ) ) {
+            Swal.fire('Error', 'Debe ingresar un RFC.' ,'error');
+            return false;
+
+        } else if ( validator.isEmpty( fecha ) || validator.isAfter(fecha, '2013-11-20') ) {
+            Swal.fire('Error', 'Debe ingresar una fecha. Y sólo puede registrar empleados mayores de edad.' ,'error');
+            return false;
+
+        } else if ( sueldo <= 0 || sueldo > 999999 ) {
+            Swal.fire('Error', 'El empleado debe tener un sueldo no mayor a $999,999' ,'error');
+            return false;
+
+        }
+
+        return true;
     }
 
     return (
@@ -33,6 +61,7 @@ export const CreateEmpScreen = () => {
                     name="nombre"
                     placeholder="Nombre"
                     autoComplete="off"
+                    maxLength="50"
                     value={ nombre }
                     onChange={ handleInputChange }
                 />
@@ -42,6 +71,7 @@ export const CreateEmpScreen = () => {
                     name="rfc"
                     placeholder="RFC"
                     autoComplete="off"
+                    maxLength="19"
                     value={ rfc }
                     onChange={ handleInputChange }
                 />
@@ -84,7 +114,7 @@ export const CreateEmpScreen = () => {
                     value={ sueldo }
                     onChange={ handleInputChange }
                 />
-                
+
                 <button
                     type="submit"
                 >
