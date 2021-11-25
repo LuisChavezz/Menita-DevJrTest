@@ -1,6 +1,10 @@
 import React from 'react'
-import { Routes, Route, BrowserRouter } from "react-router-dom";
-import { Navigate } from 'react-router';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Redirect
+} from "react-router-dom";
 
 import { Navbar } from '../components/ui/Navbar';
 import { CreateEmpScreen } from '../components/screens/CreateEmpScreen';
@@ -13,16 +17,17 @@ export const AppRouter = () => {
     
     
     return (
-        <div>
+        <Router>
             <Navbar />
 
-            <Routes >
-                    <Route exact="true" path="/menita-rh/homepage" element={ <HomeScreen /> } />
-                    <Route exact="true" path="/menita-rh/create-emp" element={ <CreateEmpScreen /> } />
-                    <Route exact="true" path="/menita-rh/list-emp" element={ <ListEmpScreen /> }  />
+            <Switch>
+                <Route exact path="/menita-rh/home" component={ HomeScreen } />
+                <Route exact path="/menita-rh/create-emp" component={ CreateEmpScreen } />
+                <Route exact path="/menita-rh/list-emp" component={ ListEmpScreen } />
 
-                    <Route path="*" element={ <Navigate to="/menita-rh/homepage" /> }  />
-            </Routes>
-        </div>
+                <Redirect to="/menita-rh/home" />
+            </Switch>
+            
+        </Router>
     )
 }

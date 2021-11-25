@@ -7,24 +7,28 @@ export const Navbar = () => {
     
     
     return (
-        <nav>
-            <Link to="/menita-rh/homepage">
-                Menita
+        <nav className="navbar" >
+            <Link to="/menita-rh/homepage" className="navbar__logo">
+                Menita-RH
             </Link>
 
-            <NavLink
-                exact="true"
-                to="/menita-rh/create-emp"
-            >
-                Dar de alta
-            </NavLink>
+            <div className="navbar__links">
+                <NavLink
+                    className="navbar__links__link"
+                    exact
+                    to="/menita-rh/create-emp"
+                >
+                    Nuevo empleado
+                </NavLink>
 
-            <NavLink 
-                exact="true"
-                to="/menita-rh/list-emp"
-            >
-                Lista de empleados
-            </NavLink>
+                <NavLink
+                    className="navbar__links__link"
+                    exact
+                    to="/menita-rh/list-emp"
+                >
+                    Lista de empleados
+                </NavLink>
+            </div>
         </nav>
     )
 }

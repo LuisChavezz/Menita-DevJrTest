@@ -1,0 +1,30 @@
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 60px;
+    width: 100%;
+    padding: 0px 10%;    
+    
+    background-color: #fff;
+    box-shadow: 0px 0.1px 3px 0px rgba(100, 100, 100, 0.75);
+
+    font-size: 1.2em;
+}
+
+.navbar__logo {
+    color: black;
+}
+
+.navbar__links__link {
+    margin: 0 15px;
+    color: black;
+    padding: 5px 10px;
+
+    &:hover {
+        color: lighten($color: #000000, $amount: 30);
+        text-decoration: underline;
+    }
+}

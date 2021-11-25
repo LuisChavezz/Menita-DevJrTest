@@ -1,0 +1,22 @@
+
+// Colors
+$gray: #f2f2f2;
+
+// Margenes y estilos
+* {
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+// Border-Box Config
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    background-color: $gray;
+}
