@@ -2,14 +2,18 @@ import React from 'react'
 import { useDispatch } from 'react-redux';
 import validator from 'validator';
 import Swal from 'sweetalert2';
+import { useHistory } from 'react-router';
 
 import { useForm } from '../../hooks/useForm';
 import { startCreateEmp } from '../../actions/empleados';
 
 
 
+
 export const CreateEmpScreen = () => {
     
+
+    let history = useHistory();
     const dispatch = useDispatch();
 
     // use form
@@ -31,6 +35,7 @@ export const CreateEmpScreen = () => {
         if ( isFormValid() ) { // Sí el formulario es válid
             dispatch( startCreateEmp( formValues ) );
             reset();
+            history.push('/menita-rh/list-emp');  
             Swal.fire('Empleado agregado', 'El empleado se ha registrado correctamente.' ,'success');
         }
     }

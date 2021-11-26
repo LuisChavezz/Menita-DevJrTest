@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory, useParams } from 'react-router'
+import { Redirect, useHistory, useParams } from 'react-router'
 import { FaUserEdit } from 'react-icons/fa';
 import { BsFillTrashFill } from 'react-icons/bs';
 import Swal from 'sweetalert2';
@@ -16,14 +16,16 @@ export const EmployeeScreen = () => {
     const {empleados} = useSelector(state => state.workers);
     const { empRFC } = useParams();
 
-    
-    const { nombre, rfc, departamento, fecha, status, sueldo  } = getEmpByRfc( empleados, empRFC );
-    console.log(status);
+
+    const empleado = getEmpByRfc( empleados, empRFC );
+    if ( !empleado ) {
+        return <Redirect to="/menita-rh/list-emp" />;
+    }
     
     
     const handleDelete = () => {
 
-        if ( status === 'Inactivo' ) {
+        if ( empleado.status === 'Inactivo' ) {
             Swal.fire({
                 title: '¿Seguro quieres dar de baja este empleado?',
                 showCancelButton: true,
@@ -31,13 +33,13 @@ export const EmployeeScreen = () => {
             }).then((result) => {
                 if (result.isConfirmed) {
                     history.replace('/menita-rh/list-emp');  
-                    dispatch( startDeleteEmp( rfc ) );      
-                    Swal.fire('Empleado Eliminado', `El empleado ${nombre} ha sido eliminado correctamente.` ,'success');
+                    dispatch( startDeleteEmp( empleado.rfc ) );      
+                    Swal.fire('Empleado Eliminado', `El empleado ${empleado.nombre} ha sido eliminado correctamente.` ,'success');
                 }
             });
 
         } else {
-            Swal.fire('Eliminación fallida', `No es posible eliminar a un usuario que aun trabaje para la empresa. Si ${nombre} ya no forma parte de la empresa, favor de editar su registro [Status]`, 'warning');
+            Swal.fire('Eliminación fallida', `No es posible eliminar a un usuario que aun trabaje para la empresa. Si ${empleado.nombre} ya no forma parte de la empresa, favor de editar su registro [Status]`, 'warning');
         }
     }
         
@@ -50,22 +52,22 @@ export const EmployeeScreen = () => {
 
                 <div className="employee__main__card__info">
                     <i>Nombre</i>
-                    <h2>{ nombre }</h2>
+                    <h2>{ empleado.nombre }</h2>
 
                     <i>Fecha de Nacimiento</i>
-                    <h2>{ fecha }</h2>
+                    <h2>{ empleado.fecha }</h2>
 
                     <i>RFC</i>
-                    <h2>{ rfc }</h2>
+                    <h2>{ empleado.rfc }</h2>
 
                     <i>Departamento</i>
-                    <h2>{ departamento }</h2>
+                    <h2>{ empleado.departamento }</h2>
 
                     <i>Sueldo</i>
-                    <h2>$ { sueldo } / mes</h2>
+                    <h2>$ { empleado.sueldo } / mes</h2>
 
                     <i>Status de empleado</i>
-                    <h2>{ status }</h2>
+                    <h2>{ empleado.status }</h2>
                 </div>
             </div>
 

@@ -30,6 +30,7 @@ export const AppRouter = () => {
                 <Route exact path="/menita-rh/create-emp" component={ CreateEmpScreen } />
                 <Route exact path="/menita-rh/list-emp" component={ ListEmpScreen } />
                 <Route exact path="/menita-rh/employee/:empRFC" component={ EmployeeScreen } />
+                <Route exact path="/menita-rh/edit-emp/:empRFC" component={ EmployeeScreen } />
 
                 <Redirect to="/menita-rh/home" />
             </Switch>
