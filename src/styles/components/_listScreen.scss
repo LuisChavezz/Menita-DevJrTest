@@ -38,7 +38,7 @@
 
 .ListEmp__main__table__edit {
     border: none;
-    background-color: #004f99;
+    background-color: $editB;
     color: #ffffff;
     border-radius: 5px;
     padding: 4px;
@@ -48,10 +48,15 @@
 
 .ListEmp__main__table__delete {
     border: none;
-    background-color: #ac0000;
+    background-color: $deleteB;
     color: #ffffff;
     border-radius: 5px;
     padding: 4px;
     font-size: 1em;
     cursor: pointer;
+}
+
+.tableLink {
+    color: black;
+    text-decoration: underline;
 }

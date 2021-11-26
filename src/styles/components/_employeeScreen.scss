@@ -1,0 +1,73 @@
+
+.employee__main {
+    display: flex;
+    justify-content: space-between;
+    margin: 50px 10%;
+    padding: 30px;
+
+
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(100, 100, 100, 0.75);
+}
+
+.employee__main__card {
+    display: flex;
+    
+}
+
+.employee__main__card__img {
+    border: 5px solid $gray;
+    box-shadow: 0px 0px 5px 0px rgba(100, 100, 100, 0.75);
+
+    img {
+        width: 350px;
+    }
+}
+
+.employee__main__card__info {
+    margin-left: 30px;
+    
+    i {
+        color: darken($color: $gray, $amount: 40);
+        font-size: 0.8em;
+    }
+
+    h2 {
+        margin-bottom: 13px;
+    }
+}
+
+.employee__main__buttons {
+
+    button {
+        margin-left: 15px;
+        border: none;
+        color: #ffffff;
+        border-radius: 5px;
+        padding: 5px 10px;
+        font-size: 1em;
+        cursor: pointer;
+    }
+
+    .employee__main__buttons__edit {
+        background-color: $editB;
+
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: darken($color: $editB, $amount: 10);
+        }
+    }
+
+    .employee__main__buttons__delete {
+        background-color: $deleteB;
+
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: darken($color: $deleteB, $amount: 10);
+        }
+    }
+}
+
