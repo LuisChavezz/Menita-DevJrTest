@@ -1,15 +1,13 @@
 import { types } from "../types/types"
 
-//Get del LS
-const lsEmp = JSON.parse(localStorage.getItem('empleados')) || [];
+//get ls empleados
+const lsEmpleados = JSON.parse( localStorage.getItem('empleados')) || [];
 
 export const startCreateEmp = ( empleado ) => {
     
     return ( dispatch ) => {
-        
-        lsEmp.push(empleado);
-        console.log(lsEmp);
-        localStorage.setItem('empleados', JSON.stringify( lsEmp ));
+        lsEmpleados.push(empleado);
+        localStorage.setItem('empleados', JSON.stringify( lsEmpleados ));
 
         dispatch( crearEmpleado( empleado ) );
     }
@@ -18,8 +16,6 @@ export const startCreateEmp = ( empleado ) => {
 export const startLoadingEmp = () => {
 
     return ( dispatch ) => {
-        const lsEmpleados = JSON.parse( localStorage.getItem('empleados'));
-
         dispatch( loadEmpleados( lsEmpleados ) );
     }
 }
