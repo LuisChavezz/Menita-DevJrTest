@@ -1,7 +1,7 @@
 import { types } from "../types/types"
 
 //get ls empleados
-const lsEmpleados = JSON.parse( localStorage.getItem('empleados')) || [];
+let lsEmpleados = JSON.parse( localStorage.getItem('empleados')) || [];
 
 export const startCreateEmp = ( empleado ) => {
     
@@ -20,6 +20,16 @@ export const startLoadingEmp = () => {
     }
 }
 
+export const startDeleteEmp = ( rfc ) => {
+
+    return ( dispatch ) => {
+        lsEmpleados = lsEmpleados.filter( emp => emp.rfc !== rfc);
+        localStorage.setItem('empleados', JSON.stringify( lsEmpleados ));
+        
+        dispatch( deleteEmpleado( rfc ) );
+    }
+}
+
 
 //actions
 export const crearEmpleado = ( empleado ) => {
@@ -33,5 +43,14 @@ export const loadEmpleados = ( empleados ) => {
     return {
         type: types.loadEmp,
         payload: empleados
+    }
+}
+
+export const deleteEmpleado = ( id ) => {
+
+    return {
+        type: types.deleteEmp,
+
+        payload: id
     }
 }

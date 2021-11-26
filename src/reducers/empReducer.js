@@ -22,6 +22,15 @@ export const empReducer = ( state = initialState, action ) => {
                 empleados: [ ...action.payload ]
             }
             
+        case types.deleteEmp:
+        
+            return {
+                ...state,
+                empleados: state.empleados.filter(
+                    emp => emp.rfc !== action.payload
+                )
+            }
+            
     
         default:
             return state;

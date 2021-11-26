@@ -1,19 +1,46 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
-import { useParams } from 'react-router'
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory, useParams } from 'react-router'
 import { FaUserEdit } from 'react-icons/fa';
 import { BsFillTrashFill } from 'react-icons/bs';
+import Swal from 'sweetalert2';
 
 import { getEmpByRfc } from '../../selectors/getEmpByRfc';
+import { startDeleteEmp } from '../../actions/empleados';
+
 
 export const EmployeeScreen = () => {
-    
+
+    let history = useHistory();
+    const dispatch = useDispatch();
     const {empleados} = useSelector(state => state.workers);
-    const { empRFC } = useParams()
+    const { empRFC } = useParams();
+
     
     const { nombre, rfc, departamento, fecha, status, sueldo  } = getEmpByRfc( empleados, empRFC );
-    // console.log({ nombre, rfc, departamento, fecha, status, sueldo  });
+    console.log(status);
+    
+    
+    const handleDelete = () => {
 
+        if ( status === 'Inactivo' ) {
+            Swal.fire({
+                title: '¿Seguro quieres dar de baja este empleado?',
+                showCancelButton: true,
+                confirmButtonText: 'Eliminar',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    history.replace('/menita-rh/list-emp');  
+                    dispatch( startDeleteEmp( rfc ) );      
+                    Swal.fire('Empleado Eliminado', `El empleado ${nombre} ha sido eliminado correctamente.` ,'success');
+                }
+            });
+
+        } else {
+            Swal.fire('Eliminación fallida', `No es posible eliminar a un usuario que aun trabaje para la empresa. Si ${nombre} ya no forma parte de la empresa, favor de editar su registro [Status]`, 'warning');
+        }
+    }
+        
     return (
         <div className="employee__main">
             <div className="employee__main__card">
@@ -51,6 +78,7 @@ export const EmployeeScreen = () => {
 
                 <button
                     className="employee__main__buttons__delete"
+                    onClick={ handleDelete }
                 >
                     Eliminar <BsFillTrashFill />
                 </button>
