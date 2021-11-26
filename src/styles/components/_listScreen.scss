@@ -1,0 +1,34 @@
+
+.ListEmp__main {
+    display: flex;
+    margin: 50px 10%;
+    padding: 20px;
+    
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(100, 100, 100, 0.75);
+    background-color: #ffffff;
+}
+
+.ListEmp__main__table {
+    border-collapse: collapse;
+    min-width: 700px;
+
+    thead tr {
+        background-color: #2e2e2e;
+        color: #ffffff;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    th, td {
+        padding: 12px 20px;
+    }
+
+    tbody tr {
+        border-bottom: 1px solid darken($color: $gray, $amount: 10);
+    }
+
+    tbody tr:nth-of-type(even) {
+        background-color: $gray;
+    }
+}
