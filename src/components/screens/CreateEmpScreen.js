@@ -1,19 +1,24 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
 import validator from 'validator';
 import Swal from 'sweetalert2';
 
 import { useForm } from '../../hooks/useForm';
+import { startCreateEmp } from '../../actions/empleados';
+
 
 
 export const CreateEmpScreen = () => {
     
+    const dispatch = useDispatch();
+
     // use form
     const [ formValues, handleInputChange, reset ] = useForm({
         nombre: '',
         rfc: '',
         fecha: '',
-        departamento: '',
-        sueldo: 0,
+        departamento: 'Recursos Humanos',
+        sueldo: 1,
         status: 'Activo',
     });
     const { nombre, rfc, fecha, departamento, sueldo, status } = formValues;
@@ -23,9 +28,10 @@ export const CreateEmpScreen = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if ( isFormValid() ) { // Sí el formulario es válido
-            console.log( formValues );
+        if ( isFormValid() ) { // Sí el formulario es válid
+            dispatch( startCreateEmp( formValues ) );
             reset();
+            Swal.fire('Empleado agregado', 'El empleado se ha registrado correctamente.' ,'success');
         }
     }
 
@@ -61,6 +67,7 @@ export const CreateEmpScreen = () => {
                     name="nombre"
                     placeholder="Nombre"
                     autoComplete="off"
+                    minLength="3"
                     maxLength="50"
                     value={ nombre }
                     onChange={ handleInputChange }
@@ -71,6 +78,7 @@ export const CreateEmpScreen = () => {
                     name="rfc"
                     placeholder="RFC"
                     autoComplete="off"
+                    minLength="19"
                     maxLength="19"
                     value={ rfc }
                     onChange={ handleInputChange }
