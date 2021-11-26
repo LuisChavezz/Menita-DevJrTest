@@ -56,7 +56,7 @@
         transition: background-color 0.3s ease;
 
         &:hover {
-            background-color: darken($color: $editB, $amount: 10);
+            background-color: darken($color: $editB, $amount: 15);
         }
     }
 
@@ -66,7 +66,7 @@
         transition: background-color 0.3s ease;
 
         &:hover {
-            background-color: darken($color: $deleteB, $amount: 10);
+            background-color: darken($color: $deleteB, $amount: 15);
         }
     }
 }

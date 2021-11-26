@@ -1,0 +1,59 @@
+
+.create__main{
+    margin: 50px 30%;
+    padding: 30px;
+
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(100, 100, 100, 0.75);
+}
+
+.create__main__form {
+    display: flex;
+    flex-direction: column;
+
+    button {
+        height: 30px;
+        border: none;
+        border-radius: 5px;
+        font-size: 1em;        
+        color: #ffffff;
+        font-weight: bold;
+        background-color: $submitB;
+        cursor: pointer;
+
+        transition: background-color .3s ease;
+
+        &:hover {
+            background-color: darken($color: $submitB, $amount: 15);
+        }
+    }
+}
+
+.create__main__form__element {
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 20px;
+    
+    i {
+        color: darken($color: $gray, $amount: 40);
+        font-size: 0.8em;
+        margin-bottom: 5px;
+    }
+
+    input, select {
+        height: 30px;
+        font-size: 1em;
+        padding-left: 5px;
+        border: none;
+        background-color: $gray;
+
+        transition: border-bottom .3s ease;
+    
+        &:focus { //todo lo anterior en 'focus'
+            outline: none;
+            border-bottom: 1px solid #000000;
+        }
+    }
+}

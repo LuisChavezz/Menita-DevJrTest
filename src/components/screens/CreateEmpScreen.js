@@ -18,7 +18,7 @@ export const CreateEmpScreen = () => {
         rfc: '',
         fecha: '',
         departamento: 'Recursos Humanos',
-        sueldo: 1,
+        sueldo: 100,
         status: 'Activo',
     });
     const { nombre, rfc, fecha, departamento, sueldo, status } = formValues;
@@ -60,68 +60,92 @@ export const CreateEmpScreen = () => {
     }
 
     return (
-        <div>
-            <form onSubmit={ handleSubmit }>
-                <input 
-                    type="text" 
-                    name="nombre"
-                    placeholder="Nombre"
-                    autoComplete="off"
-                    minLength="3"
-                    maxLength="50"
-                    value={ nombre }
-                    onChange={ handleInputChange }
-                />
+        <div className="create__main">
+            <form onSubmit={ handleSubmit } className="create__main__form">
+                <div className="create__main__form__element">
 
-                <input 
-                    type="text" 
-                    name="rfc"
-                    placeholder="RFC"
-                    autoComplete="off"
-                    minLength="19"
-                    maxLength="19"
-                    value={ rfc }
-                    onChange={ handleInputChange }
-                />
+                    <i>Nombre</i>
+                    <input 
+                        type="text" 
+                        name="nombre"
+                        placeholder="Nombre (Mínimo 3 carácteres)"
+                        autoComplete="off"
+                        minLength="3"
+                        maxLength="50"
+                        value={ nombre }
+                        onChange={ handleInputChange }
+                    />
+                </div>
 
-                <input 
-                    type="date" 
-                    name="fecha"    
-                    value={ fecha }
-                    onChange={ handleInputChange }
-                />
+                <div className="create__main__form__element">
 
-                <label>Departamento: </label>
-                <select 
-                    name="departamento"
-                    value={ departamento }
-                    onChange={ handleInputChange }
-                >
-                    <option value="Recursos humanos">Recursos Humanos</option>
-                    <option value="Sistemas">Sistemas</option>
-                    <option value="Contabilidad">Contabilidad</option>
-                    <option value="Credito y Cobranza">Credito y Cobranza</option>
-                    <option value="Nómina">Nómina</option>
-                </select>
+                    <i>RFC</i>
+                    <input 
+                        type="text" 
+                        name="rfc"
+                        placeholder="RFC (19 carácteres)"
+                        autoComplete="off"
+                        minLength="19"
+                        maxLength="19"
+                        value={ rfc }
+                        onChange={ handleInputChange }
+                    />
+                </div>
+
+                <div className="create__main__form__element">
+
+                    <i>Fecha de nacimiento (sólo mayores de edad)</i>
+                    <input 
+                        type="date" 
+                        name="fecha"    
+                        value={ fecha }
+                        onChange={ handleInputChange }
+                    />
+                </div>
+
+                <div className="create__main__form__element">
+
+                    <i>Departamento</i>
+                    <select 
+                        name="departamento"
+                        value={ departamento }
+                        onChange={ handleInputChange }
+                    >
+                        <option value="Recursos humanos">Recursos Humanos</option>
+                        <option value="Sistemas">Sistemas</option>
+                        <option value="Contabilidad">Contabilidad</option>
+                        <option value="Credito y Cobranza">Credito y Cobranza</option>
+                        <option value="Nómina">Nómina</option>
+                        <option value="Legal">Legal</option>
+                    </select>
+                </div>
+
+                <div className="create__main__form__element">
+
+                    <i>Status (Sí actualmente trabaaja para la empresa)</i>
+                    <select 
+                        name="status"
+                        value={ status }
+                        onChange={ handleInputChange }
+                    >
+                        <option value="Activo">Activo</option>
+                        <option value="Inactivo">Inactivo</option>
+                    </select>
+                </div>
                 
-                <label>Status: </label>
-                <select 
-                    name="status"
-                    value={ status }
-                    onChange={ handleInputChange }
-                >
-                    <option value="Activo">Activo</option>
-                    <option value="Inactivo">Inactivo</option>
-                </select>
+                <div className="create__main__form__element">
 
-                <input 
-                    type="number"
-                    name="sueldo"
-                    placeholder="Sueldo"
-                    autoComplete="off"
-                    value={ sueldo }
-                    onChange={ handleInputChange }
-                />
+                    <i>Sueldo ($1 - $999999)</i>
+                    <input 
+                        type="number"
+                        name="sueldo"
+                        placeholder="Sueldo"
+                        autoComplete="off"
+                        value={ sueldo }
+                        onChange={ handleInputChange }
+                    />
+                </div>
+
 
                 <button
                     type="submit"
