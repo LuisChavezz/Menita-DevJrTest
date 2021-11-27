@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/Menita-DevJrTest/static/css/main.599bba38.chunk.css",
+    "main.js": "/Menita-DevJrTest/static/js/main.e3b5198a.chunk.js",
+    "main.js.map": "/Menita-DevJrTest/static/js/main.e3b5198a.chunk.js.map",
+    "runtime-main.js": "/Menita-DevJrTest/static/js/runtime-main.ad7ec6cf.js",
+    "runtime-main.js.map": "/Menita-DevJrTest/static/js/runtime-main.ad7ec6cf.js.map",
+    "static/js/2.dc055bc5.chunk.js": "/Menita-DevJrTest/static/js/2.dc055bc5.chunk.js",
+    "static/js/2.dc055bc5.chunk.js.map": "/Menita-DevJrTest/static/js/2.dc055bc5.chunk.js.map",
+    "index.html": "/Menita-DevJrTest/index.html",
+    "static/css/main.599bba38.chunk.css.map": "/Menita-DevJrTest/static/css/main.599bba38.chunk.css.map",
+    "static/js/2.dc055bc5.chunk.js.LICENSE.txt": "/Menita-DevJrTest/static/js/2.dc055bc5.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ad7ec6cf.js",
+    "static/js/2.dc055bc5.chunk.js",
+    "static/css/main.599bba38.chunk.css",
+    "static/js/main.e3b5198a.chunk.js"
+  ]
+}
