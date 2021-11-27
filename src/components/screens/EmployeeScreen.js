@@ -34,7 +34,7 @@ export const EmployeeScreen = () => {
                 confirmButtonText: 'Eliminar',
             }).then((result) => {
                 if (result.isConfirmed) {
-                    history.replace('/menita-rh/list-emp');  
+                    history.replace('/menita-rh/home');  
                     dispatch( startDeleteEmp( empleado.rfc ) );      
                     Swal.fire('Empleado Eliminado', `El empleado ${empleado.nombre} ha sido eliminado correctamente.` ,'success');
                 }
