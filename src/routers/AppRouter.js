@@ -13,6 +13,7 @@ import { HomeScreen } from '../components/screens/HomeScreen';
 import { ListEmpScreen } from '../components/screens/ListEmpScreen';
 import { startLoadingEmp } from '../actions/empleados';
 import { EmployeeScreen } from '../components/screens/EmployeeScreen';
+import { EditEmpScreen } from '../components/screens/EditEmpScreen';
 
 
 
@@ -30,7 +31,7 @@ export const AppRouter = () => {
                 <Route exact path="/menita-rh/create-emp" component={ CreateEmpScreen } />
                 <Route exact path="/menita-rh/list-emp" component={ ListEmpScreen } />
                 <Route exact path="/menita-rh/employee/:empRFC" component={ EmployeeScreen } />
-                <Route exact path="/menita-rh/edit-emp/:empRFC" component={ EmployeeScreen } />
+                <Route exact path="/menita-rh/edit-emp/:empRFC" component={ EditEmpScreen } />
 
                 <Redirect to="/menita-rh/home" />
             </Switch>

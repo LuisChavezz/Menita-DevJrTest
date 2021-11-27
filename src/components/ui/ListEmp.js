@@ -42,11 +42,14 @@ export const ListEmp = ({ nombre, rfc, departamento, status } ) => {
             <td>{ departamento }</td>
             <td>{ status }</td>
             <td>
-                <button
-                    className="ListEmp__main__table__edit"
-                >
-                    <FaUserEdit />
-                </button>
+                <Link to={`/menita-rh/edit-emp/${rfc}`} className="tableLink">
+                    <button
+                        className="ListEmp__main__table__edit"
+                    >
+                        <FaUserEdit />
+                    </button>
+                </Link>
+                
             </td>
             <td>
                 <button

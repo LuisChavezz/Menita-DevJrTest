@@ -4,9 +4,11 @@ import { Redirect, useHistory, useParams } from 'react-router'
 import { FaUserEdit } from 'react-icons/fa';
 import { BsFillTrashFill } from 'react-icons/bs';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 import { getEmpByRfc } from '../../selectors/getEmpByRfc';
 import { startDeleteEmp } from '../../actions/empleados';
+
 
 
 export const EmployeeScreen = () => {
@@ -72,11 +74,13 @@ export const EmployeeScreen = () => {
             </div>
 
             <div className="employee__main__buttons">
-                <button
-                    className="employee__main__buttons__edit"
-                >
-                    Editar <FaUserEdit />
-                </button>
+                <Link to={`/menita-rh/edit-emp/${empleado.rfc}`} >
+                    <button
+                        className="employee__main__buttons__edit"
+                    >
+                        Editar <FaUserEdit />
+                    </button>
+                </Link>
 
                 <button
                     className="employee__main__buttons__delete"

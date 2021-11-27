@@ -20,10 +20,24 @@ export const startLoadingEmp = () => {
     }
 }
 
+export const startUpdateEmp = ( rfc, empleado ) => {
+
+    return ( dispatch ) => {
+        lsEmpleados = lsEmpleados.map(
+            emp => ( emp.rfc === rfc )
+                ? emp = empleado
+                : emp
+        );
+        localStorage.setItem('empleados', JSON.stringify( lsEmpleados ));
+
+        dispatch( updateEmpleado( rfc, empleado ) );
+    }
+}
+
 export const startDeleteEmp = ( rfc ) => {
 
     return ( dispatch ) => {
-        lsEmpleados = lsEmpleados.filter( emp => emp.rfc !== rfc);
+        lsEmpleados = lsEmpleados.filter( emp => emp.rfc !== rfc );
         localStorage.setItem('empleados', JSON.stringify( lsEmpleados ));
         
         dispatch( deleteEmpleado( rfc ) );
@@ -52,5 +66,20 @@ export const deleteEmpleado = ( id ) => {
         type: types.deleteEmp,
 
         payload: id
+    }
+}
+
+export const updateEmpleado = ( rfc, empleado ) => {
+
+    return {
+        type: types.updateEmp,
+
+        payload: {
+            rfc,
+            empleado: {
+                rfc,
+                ...empleado
+            }
+        }
     }
 }

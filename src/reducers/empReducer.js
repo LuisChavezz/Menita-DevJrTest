@@ -21,6 +21,17 @@ export const empReducer = ( state = initialState, action ) => {
                 ...state,
                 empleados: [ ...action.payload ]
             }
+
+        case types.updateEmp:
+        
+            return {
+                ...state,
+                empleados: state.empleados.map(
+                    emp => (emp.rfc === action.payload.rfc)
+                        ? action.payload.empleado 
+                        : emp
+                )
+            }
             
         case types.deleteEmp:
         
