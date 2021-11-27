@@ -16,7 +16,6 @@ export const ListEmpScreen = () => {
     });
 
     useEffect(() => {
-        console.log(filtros)
         if ( filtros.dep === '' && filtros.stat === '' ) {
             setEmpleados(empleados);
         
