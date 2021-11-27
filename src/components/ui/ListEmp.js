@@ -21,7 +21,7 @@ export const ListEmp = ({ nombre, rfc, departamento, status } ) => {
                 confirmButtonText: 'Eliminar',
             }).then((result) => {
                 if (result.isConfirmed) {
-                    history.push('/menita-rh/list-emp');  
+                    history.replace('/menita-rh/home');  
                     dispatch( startDeleteEmp( rfc ) );      
                     Swal.fire('Empleado Eliminado', `El empleado ${nombre} ha sido eliminado correctamente.` ,'success');
                 }
