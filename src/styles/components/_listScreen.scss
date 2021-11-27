@@ -1,8 +1,34 @@
 
 .ListEmp__main {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     margin: 50px 0;
+}
+
+.ListEmp__filters {
+    display: flex;
+    margin-bottom: 20px;
+    
+    div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        margin: 0px 20px;
+
+        p {
+            margin-bottom: 5px;
+        }
+
+        select {
+            height: 30px;
+            font-size: 1em;
+            padding-left: 5px;
+            border: #2e2e2e 1px solid;
+        }
+    }
 }
 
 .ListEmp__main__table {
